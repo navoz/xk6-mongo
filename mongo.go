@@ -58,7 +58,7 @@ func (c *Client) Find(database string, collection string, filter interface{}) []
 	col := db.Collection(collection)
 
 	
-	log.Print("filter is ", filter)
+	log.Print("filter is: ", filter)
 	cur, err := col.Find(context.TODO(), filter)
 	if err != nil {
 		log.Fatal("error while find: ", err)
