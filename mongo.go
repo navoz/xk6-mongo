@@ -61,12 +61,13 @@ func (c *Client) Find(database string, collection string, filter interface{}) []
 	log.Print("filter is ", filter)
 	cur, err := col.Find(context.TODO(), filter)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("error while find: ", err)
 		// return nil
 	}
 
 	var results []bson.M
 	if err = cur.All(context.TODO(), &results); err != nil {
+		log.Print("error while  processibg resuslts...") 
 		panic(err)
 	}
 	return results
